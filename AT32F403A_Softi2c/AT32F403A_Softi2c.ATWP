@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+    <MCUInfo>
+        <MCUSerials>AT32F403A</MCUSerials>
+        <MCUName>AT32F403AVGT7</MCUName>
+        <MCUPackage>LQFP100</MCUPackage>
+    </MCUInfo>
+    <CRM>
+        <Mode>
+            <ModeSub name="HEXT" value="HEXT-External-Oscillator"/>
+            <ModeSub name="LEXT" value="LEXT-External-Oscillator"/>
+        </Mode>
+        <Parameters>
+            <ParametersSub name="HEXT" value="HEXT_CRYSTAL"/>
+            <ParametersSub name="LEXT" value="LEXT_CRYSTAL"/>
+        </Parameters>
+    </CRM>
+    <DEBUG>
+        <Mode>
+            <ModeSub name="Debug interface" value="JTAG (5pin)"/>
+        </Mode>
+    </DEBUG>
+    <UART4>
+        <Mode>
+            <ModeSub name="Mode" value="Asynchronous"/>
+        </Mode>
+    </UART4>
+    <NVIC>
+        <SysTick_Handler>1;0;0</SysTick_Handler>
+        <FLASH_IRQHandler>0;0;0</FLASH_IRQHandler>
+        <CRM_IRQHandler>1;0;0</CRM_IRQHandler>
+        <UART4_IRQHandler>1;0;0</UART4_IRQHandler>
+    </NVIC>
+    <GPIO>
+        <Signal SignalName="UART4_TX" PinName="PC10">
+            <Parameters name="Label" value="debug_TX"/>
+        </Signal>
+        <Signal SignalName="UART4_RX" PinName="PC11">
+            <Parameters name="GPIO_PullType_Set" value="GPIO_PULL_UP"/>
+            <Parameters name="Label" value="debug_RX"/>
+        </Signal>
+        <Signal SignalName="GPIO_Output" PinName="PB6">
+            <Parameters name="GPIO_Outputlevel" value="GPIO_OUTPUTLEVEL_HIGH"/>
+            <Parameters name="GPIO_Type" value="GPIO_OUTPUT_OPEN_DRAIN"/>
+            <Parameters name="GPIO_DriverCapability" value="GPIO_DRIVE_STRENGTH_STRONGER"/>
+            <Parameters name="Label" value="MPU6050_SCL"/>
+        </Signal>
+        <Signal SignalName="GPIO_Output" PinName="PB7">
+            <Parameters name="GPIO_Outputlevel" value="GPIO_OUTPUTLEVEL_HIGH"/>
+            <Parameters name="GPIO_Type" value="GPIO_OUTPUT_OPEN_DRAIN"/>
+            <Parameters name="GPIO_DriverCapability" value="GPIO_DRIVE_STRENGTH_STRONGER"/>
+            <Parameters name="Label" value="MPU6050_SDA"/>
+        </Signal>
+    </GPIO>
+    <ClockConfiguration>
+        <rtcsel>1</rtcsel>
+        <hext>25.000000</hext>
+        <hextdiv>2</hextdiv>
+        <pllhextdiv>0</pllhextdiv>
+        <pllrcs>1</pllrcs>
+        <pllmult>60</pllmult>
+        <sclkselect>1</sclkselect>
+        <ahbdiv>2</ahbdiv>
+        <apb1div>2</apb1div>
+        <apb2div>2</apb2div>
+        <usbdiv>4.0</usbdiv>
+        <hicktousb>1</hicktousb>
+        <hicktosclk>0</hicktosclk>
+        <clkout>0</clkout>
+        <clkoutdiv>1</clkoutdiv>
+        <adcdiv>6</adcdiv>
+    </ClockConfiguration>
+    <PINInfo>
+        <PinSub pinname="PC14" signalname="CRM_LEXT_IN" signaltype="2"/>
+        <PinSub pinname="PC15" signalname="CRM_LEXT_OUT" signaltype="2"/>
+        <PinSub pinname="HEXT_IN" signalname="CRM_HEXT_IN" signaltype="2"/>
+        <PinSub pinname="HEXT_OUT" signalname="CRM_HEXT_OUT" signaltype="2"/>
+        <PinSub pinname="PA13" signalname="DEBUG_JTMS_SWDIO" signaltype="2"/>
+        <PinSub pinname="PA14" signalname="DEBUG_JTCK_SWCLK" signaltype="2"/>
+        <PinSub pinname="PA15" signalname="DEBUG_JTDI" signaltype="2"/>
+        <PinSub pinname="PC10" signalname="UART4_TX" signaltype="2"/>
+        <PinSub pinname="PC11" signalname="UART4_RX" signaltype="2"/>
+        <PinSub pinname="PB3" signalname="DEBUG_JTDO" signaltype="2"/>
+        <PinSub pinname="PB4" signalname="DEBUG_NJTRST" signaltype="2"/>
+        <PinSub pinname="PB6" signalname="GPIO_Output" signaltype="3"/>
+        <PinSub pinname="PB7" signalname="GPIO_Output" signaltype="3"/>
+    </PINInfo>
+    <ProjectInfomation>
+        <ProjectName>AT32F403A_Softi2c</ProjectName>
+        <ProjectLocation>E:/AT32F403A_Demo/AT32F403AMPU6050Test</ProjectLocation>
+        <ToolchainIDE>MDK_V5</ToolchainIDE>
+        <KeepUserCode>true</KeepUserCode>
+        <MinHeapSize>0x200</MinHeapSize>
+        <MinStackSize>0x400</MinStackSize>
+        <UseFirmware>true</UseFirmware>
+        <PackageVersion>V2.1.8</PackageVersion>
+    </ProjectInfomation>
+</Root>
