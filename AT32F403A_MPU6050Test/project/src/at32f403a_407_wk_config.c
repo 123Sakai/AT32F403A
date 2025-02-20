@@ -205,6 +205,9 @@ void wk_periph_clock_config(void)
   /* enable gpioc periph clock */
   crm_periph_clock_enable(CRM_GPIOC_PERIPH_CLOCK, TRUE);
 
+  /* enable gpiod periph clock */
+  crm_periph_clock_enable(CRM_GPIOD_PERIPH_CLOCK, TRUE);
+
   /* enable uart4 periph clock */
   crm_periph_clock_enable(CRM_UART4_PERIPH_CLOCK, TRUE);
 
@@ -229,6 +232,39 @@ void wk_nvic_config(void)
   nvic_irq_enable(I2C1_EVT_IRQn, 0, 0);
   nvic_irq_enable(I2C1_ERR_IRQn, 0, 0);
   nvic_irq_enable(UART4_IRQn, 0, 0);
+}
+
+/**
+  * @brief  init gpio_input/gpio_output/gpio_analog/eventout function.
+  * @param  none
+  * @retval none
+  */
+void wk_gpio_config(void)
+{
+  /* add user code begin gpio_config 0 */
+
+  /* add user code end gpio_config 0 */
+
+  gpio_init_type gpio_init_struct;
+  gpio_default_para_init(&gpio_init_struct);
+
+  /* add user code begin gpio_config 1 */
+
+  /* add user code end gpio_config 1 */
+
+  /* gpio output config */
+  gpio_bits_reset(DHT11_SDA_GPIO_PORT, DHT11_SDA_PIN);
+
+  gpio_init_struct.gpio_drive_strength = GPIO_DRIVE_STRENGTH_MODERATE;
+  gpio_init_struct.gpio_out_type = GPIO_OUTPUT_PUSH_PULL;
+  gpio_init_struct.gpio_mode = GPIO_MODE_MUX;
+  gpio_init_struct.gpio_pins = DHT11_SDA_PIN;
+  gpio_init_struct.gpio_pull = GPIO_PULL_NONE;
+  gpio_init(DHT11_SDA_GPIO_PORT, &gpio_init_struct);
+
+  /* add user code begin gpio_config 2 */
+
+  /* add user code end gpio_config 2 */
 }
 
 /**

@@ -38,6 +38,7 @@
 #include "at32f403a_407_int.h"
 #include "i2c_application.h"
 #include "universal_peripherals.h"
+#include "dht11.h"
 /* add user code end private includes */
 
 /* private typedef -----------------------------------------------------------*/
@@ -78,6 +79,7 @@ uint8_t recv_end_flag_uart4 = 0,Rx_len_uart4;//接收完成中断标志，接收
 /* private function prototypes --------------------------------------------*/
 /* add user code begin function prototypes */
 MPU6050_Info_t *mpu6050 = { 0 };
+DHT11_Data_t dht11 = { 0 };
 /* add user code end function prototypes */
 
 /* private user code ---------------------------------------------------------*/
@@ -213,6 +215,21 @@ void mpu6050_capture_data(void)
 	printf("\r\n");
 	delay_ms(1000);
 }
+
+void dht11_capture_data(void)
+{
+	uint8_t ret = 0;
+	ret = dht11_read_raw_data(&dht11);
+	if(ret)
+	{
+		printf("Temperature = %d.%d degree\r\n",dht11.dht11_temp>>8,dht11.dht11_temp&0xff);
+    printf("Humidity = %d.%d%%\r\n",dht11.dht11_humi>>8,dht11.dht11_humi&0xff);  
+	}
+	else
+	{
+		printf("cannot find dht11\n");
+	}
+}
 /* add user code end 0 */
 
 /**
@@ -267,25 +284,26 @@ int main(void)
   /* init exint function. */
   wk_exint_config();
 
+  /* init gpio function. */
+  wk_gpio_config();
+
   /* add user code begin 2 */
 	delay_init();
 	Led_and_Button_init();
-	mpu6050_struct_init();
-	mpu6050_working_before();
-	//debug
-//	while(1)
-//	{
-//		MPU6050_GetID(mpu6050,mpu6050_id);
-//	}
 	
-
+	mpu6050_struct_init();  //mpu6050 init
+	mpu6050_working_before(); //query mpu6050's ID
+	delay_sec(1);
+	printf("start1\n"); 
+	
   /* add user code end 2 */
 
   while(1)
   {
     /* add user code begin 3 */
-		mpu6050_capture_data();
-		
+		mpu6050_capture_data(); //get mpu6050 data
+		dht11_capture_data();   //get dht11 data
+		delay_sec(1);
     /* add user code end 3 */
   }
 }

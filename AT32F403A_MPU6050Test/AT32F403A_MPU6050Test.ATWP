@@ -62,6 +62,9 @@
         <UART4_IRQHandler>1;0;0</UART4_IRQHandler>
     </NVIC>
     <GPIO>
+        <Signal SignalName="GPIO_Output" PinName="PD8">
+            <Parameters name="Label" value="DHT11_SDA"/>
+        </Signal>
         <Signal SignalName="UART4_TX" PinName="PC10">
             <Parameters name="Label" value="debug_TX"/>
         </Signal>
@@ -102,6 +105,7 @@
         <PinSub pinname="HEXT_IN" signalname="CRM_HEXT_IN" signaltype="2"/>
         <PinSub pinname="HEXT_OUT" signalname="CRM_HEXT_OUT" signaltype="2"/>
         <PinSub pinname="PA0" signalname="EXINT0" signaltype="2"/>
+        <PinSub pinname="PD8" signalname="GPIO_Output" signaltype="3"/>
         <PinSub pinname="PA13" signalname="DEBUG_JTMS_SWDIO" signaltype="2"/>
         <PinSub pinname="PA14" signalname="DEBUG_JTCK_SWCLK" signaltype="2"/>
         <PinSub pinname="PA15" signalname="DEBUG_JTDI" signaltype="2"/>

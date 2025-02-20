@@ -115,6 +115,8 @@ extern "C" {
 /* add user code end dma define */
 
 /* Private defines -------------------------------------------------------------*/
+#define DHT11_SDA_PIN    GPIO_PINS_8
+#define DHT11_SDA_GPIO_PORT    GPIOD
 #define debug_TX_PIN    GPIO_PINS_10
 #define debug_TX_GPIO_PORT    GPIOC
 #define debug_RX_PIN    GPIO_PINS_11
@@ -136,6 +138,9 @@ extern "C" {
 
   /* nvic config. */
   void wk_nvic_config(void);
+
+  /* init gpio function. */
+  void wk_gpio_config(void);
 
   /* init exint function. */
   void wk_exint_config(void);
@@ -161,6 +166,10 @@ extern "C" {
 #define SDA_RESET gpio_bits_reset(MPU_SCL_GPIO_PORT,MPU_SCL_PIN)
 #define SCL_SET gpio_bits_set(MPU_SCL_GPIO_PORT,MPU_SCL_PIN)
 #define SCL_RESET gpio_bits_reset(MPU_SCL_GPIO_PORT,MPU_SCL_PIN)
+
+#define DHT11_SDA_SET gpio_bits_set(DHT11_SDA_GPIO_PORT, DHT11_SDA_PIN)
+#define DHT11_SDA_RESET gpio_bits_reset(DHT11_SDA_GPIO_PORT, DHT11_SDA_PIN)
+#define DHT11_READ_DATA gpio_input_data_bit_read(DHT11_SDA_GPIO_PORT, DHT11_SDA_PIN)
 
 #define I2C_TIMEOUT                      0x0FFFFFFF
 #define I2Cx_PORT                        I2C1
